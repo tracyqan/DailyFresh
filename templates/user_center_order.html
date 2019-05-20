@@ -1,0 +1,34 @@
+{% extends 'base_user_center.html' %}
+{# 用户中心右侧内容块 #}
+{% block rigth_content %}
+		<div class="right_content clearfix">
+				<h3 class="common_title2">全部订单</h3>
+				
+				
+
+				<div class="pagenation">
+					
+					
+					
+					<a class="active">1</a>
+					
+					
+					
+				</div>
+
+                
+		</div>
+{% endblock rigth_content %}
+    
+
+
+
+{% block bottom_js %}
+	<script>
+		$(".col04").html(function () {
+			var num1 = parseInt($(this).prevAll(".col03").html());
+            var num2 = parseFloat($(this).prevAll(".col02").children().attr("id"));
+            return (num1*100*num2*100/10000).toFixed(2)+"元";
+        })
+	</script>
+{% endblock bottom_js %}

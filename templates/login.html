@@ -1,0 +1,54 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}天天生鲜－登录{% endblock title %}
+{% block js_files %}
+	<script type="text/javascript" src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/login.js' %}"></script>
+{% endblock js_files %}
+
+{% block header_con %}{% endblock header_con %}
+{% block search_bar %}{% endblock search_bar %}
+{% block body %}
+
+	<div class="login_top clearfix">
+		<a href="{% url 'goods:index' %}" class="login_logo"><img src="{% static 'images/logo.png' %}"></a>
+	</div>
+
+	<div class="login_form_bg">
+		<div class="login_form_wrap clearfix">
+			<div class="login_banner fl"></div>
+			<div class="slogan fl">日夜兼程 · 急速送达</div>
+			<div class="login_form fr">
+				<div class="login_title clearfix">
+					<h1>用户登录</h1>
+					<a href="{% url 'user:login' %}">立即注册</a>
+				</div>
+				<div class="form_input">
+                    {# 不设置action属性,会提交到浏览器当前的地址 #}
+					<form  method="post" id="from_login">
+                        {% csrf_token %}
+						<input type="text" name="username" id="username" class="name_input" placeholder="请输入用户" value="">
+						<div class="user_error">输入错误</div>
+						<input type="password" name="pwd" id="pwd" class="pass_input" placeholder="请输入密码" value="">
+						<div class="pwd_error">输入错误</div>
+						
+<img src="{% static 'css/saved_resource' %}" alt="captcha" class="captcha"><input id="id_captcha_0" name="captcha_0" type="hidden" value="a96af1ae987e64d2a0737900011e36e8c843ce61">
+<input autocapitalize="off" autocomplete="off" autocorrect="off" spellcheck="false" id="id_captcha_1" name="captcha_1" type="text" placeholder="请输入验证码">
+
+
+						<div class="yanzheng_error">请输入验证码</div>
+						<div class="more_input clearfix">
+							<input type="checkbox" name="remember" id="jzyhm" checked="checked">
+							<label>记住用户名</label>
+							<a href="http://ttsx.newzn.cn/user/updatepwd">忘记密码</a>
+						</div>
+						<input type="submit" name="" value="登录" class="input_submit">
+					</form>
+
+				</div>
+			</div>
+		</div>
+    {{ errormsg }}
+	</div>
+
+{% endblock body %}
